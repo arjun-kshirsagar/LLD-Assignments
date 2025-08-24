@@ -1,5 +1,4 @@
-public class Bird {
-     void fly(){
-         System.out.println("Flap!"); 
-        } 
-    }
+public abstract class Bird {
+    // Base bird class without fly method
+    // Specific bird types will implement their own behaviors
+}
