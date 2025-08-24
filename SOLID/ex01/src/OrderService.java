@@ -36,17 +36,15 @@
  */
 public class OrderService {
     private final Notifier notifier; // depends on abstraction
+    private final Taxation taxation;
 
-    public OrderService(Notifier notifier) {
+    public OrderService(Notifier notifier, Taxation taxation) {
         this.notifier = notifier;
-    }
-
-    double totalWithTax(double subtotal) {
-        return subtotal + subtotal * 0.18;
+        this.taxation = taxation;
     }
 
     void checkout(String customerContact, double subtotal) {
-        double total = totalWithTax(subtotal);
+        double total = this.taxation.totalWithTax(subtotal);
         notifier.send(customerContact, "Thanks! Your total is " + total);
         System.out.println("Order stored (pretend DB).");
     }
